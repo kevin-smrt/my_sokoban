@@ -40,7 +40,7 @@ typedef struct list_s
     struct goal_s *goal;
 }list_t;
 
-//lib 
+//lib
 int	my_strcmp(char *s1, char *s2);
 void my_putstr(char *str);
 int my_puterror(char *str);

@@ -7,70 +7,50 @@
 
 #include "../include/sokoban.h"
 
-void print_list(list_t *li)
-{
-	if (li->box == NULL) {
-		printf("Box list empty\n");
-		return;
-	}
-    if (li->goal == NULL) {
-		printf("Goal list empty\n");
-		return;
-	}
-	while (li->box != NULL) {
-		printf("Box = [x = %d] && [y = %d]\n", li->box->x, li->box->y);
-		li->box = li->box->next;
-	}
-    while (li->goal != NULL) {
-		printf("Goal = [x = %d] && [y = %d]\n", li->goal->x, li->goal->y);
-		li->goal = li->goal->next;
-	}
-}
-
 list_t *push_back_box(list_t *li, int y, int x)
 {
-	box_t *element = malloc(sizeof(*element));
-	if (element == NULL)
-		my_puterror("Malloc error from chained list box\n");
+    box_t *element = malloc(sizeof(*element));
+    if (element == NULL)
+        my_puterror("Malloc error from chained list box\n");
 
-	element->x = x;
+    element->x = x;
     element->y = y;
-	element->next = NULL;
+    element->next = NULL;
 
-	if (li->box == NULL) {
+    if (li->box == NULL) {
         li->box = element;
         return (li);
     }
 
-	box_t *temp;
-	temp = li->box;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp->next = element;
-	return (li);
+    box_t *temp;
+    temp = li->box;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = element;
+    return (li);
 }
 
 list_t *push_back_goal(list_t *li, int y, int x)
 {
-	goal_t *element = malloc(sizeof(*element));
-	if (element == NULL)
-		my_puterror("Malloc error from chained list goal\n");
+    goal_t *element = malloc(sizeof(*element));
+    if (element == NULL)
+        my_puterror("Malloc error from chained list goal\n");
 
-	element->x = x;
+    element->x = x;
     element->y = y;
-	element->next = NULL;
+    element->next = NULL;
 
-	if (li->goal == NULL) {
+    if (li->goal == NULL) {
         li->goal = element;
         return (li);
     }
 
-	goal_t *temp;
-	temp = li->goal;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp->next = element;
-	return (li);
+    goal_t *temp;
+    temp = li->goal;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = element;
+    return (li);
 }
 
 int create_list(char **map, int line, int goal)
@@ -87,11 +67,11 @@ int create_list(char **map, int line, int goal)
                 list = push_back_box(list, i, j);
             if (map[i][j] == 'O')
                 list = push_back_goal(list, i, j);
-			if (map[i][j] == 'P') {
-				list->p_y = i;
-				list->p_x = j;
-			}
+            if (map[i][j] == 'P') {
+                list->p_y = i;
+                list->p_x = j;
+            }
         }
     }
-    return(init_map(map, list));
+    return (init_map(map, list));
 }

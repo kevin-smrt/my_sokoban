@@ -21,7 +21,7 @@ int count_line(char *buffer)
 
 void count_char(char *buffer, int *index)
 {
-    for(; buffer[*index] != '\n' && buffer[*index] != '\0'; *index += 1);
+    for (; buffer[*index] != '\n' && buffer[*index] != '\0'; *index += 1);
     *index += 1;
 }
 

@@ -49,13 +49,6 @@ int is_move_okay_box(int b_y, int b_x)
     if (testch != BLOCK && testch != BOXES)
         return (1);
     return (0);
-    // int testch2;
-
-    // testch = mvinch(y, x);
-    // testch2 = mvinch(boxy, boxx);
-
-    // return (testch != BLOCK && testch2 != BLOCK) ||
-    // ((testch != BLOCK && testch == EMPTY) || testch == GOALS);
 }
 
 void player_move(int ch, list_t *list)
